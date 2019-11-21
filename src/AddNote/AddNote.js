@@ -12,14 +12,27 @@ export default class AddNote extends React.Component {
         const noteContentInput = event.target.noteContentInput.value;
         const folderId = event.target.folderSelect.value;
         //console.log(folderSelect)
-        this.handleAddNote(noteNameInput, noteContentInput, folderId);
+        let validateResult = this.validateNoteName(noteNameInput);
+        if (validateResult) {
+            alert(validateResult);
+        }
+        else {
+            this.handleAddNote(noteNameInput, noteContentInput, folderId);
+        }
     }
+
+    validateNoteName(name) {
+        const nameTrimmed = name.trim();
+        if (nameTrimmed.length < 1) {
+          return 'Note name cannot be empty';
+        } 
+      }
 
     handleAddNote(noteNameInput, noteContentInput, folderId) {
         const data = {
             name: `${noteNameInput}`,
             content: `${noteContentInput}`,
-            modified: `${(new Date).toISOString()}`,
+            modified: `${(new Date()).toISOString()}`,
             folderId: `${folderId}`,
         };
         fetch(`${config.API_ENDPOINT}/notes`, {
@@ -64,7 +77,7 @@ export default class AddNote extends React.Component {
                         <select id="note-folder-select" name="folderSelect">
                             <option>...</option>
                             {this.context.folders.map((folder) =>
-                                <option value={folder.id}>{folder.name}</option>
+                                <option key={folder.id} value={folder.id}>{folder.name}</option>
                             )}
                         </select>
                     </div>
