@@ -48,7 +48,6 @@ export default class AddNote extends React.Component {
                 return res.json()
             })
             .then((json) => {
-                console.log(json);
                 this.context.addNote(json)
                 // allow parent to perform extra behaviour
                 //this.props.onDeleteNote(noteId)
