@@ -9,8 +9,21 @@ export default class AddFolder extends React.Component {
     handleSubmit(event) {
         event.preventDefault();
         const folderNameInput = event.target.folderNameInput.value;
-        console.log('Name: ', folderNameInput);
-        this.handleAddFolder(folderNameInput);
+
+        let validateResult = this.validateFolderName(folderNameInput);
+        if (validateResult) {
+            alert(validateResult);
+        }
+        else {
+          this.handleAddFolder(folderNameInput);
+        }
+    }
+
+    validateFolderName(name) {
+      const nameTrimmed = name.trim();
+      if (nameTrimmed.length < 1) {
+        return 'Folder name cannot be empty';
+      } 
     }
 
     handleAddFolder = folderName => {
