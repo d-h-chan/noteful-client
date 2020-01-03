@@ -1,7 +1,6 @@
 {
   "version": 2,
-  "alias": "my-bookmarks-app",
-  "name": "bookmarks-app",
+  "name": "noteful-app",
   "routes": [
     {
       "src": "^/static/(.*)",
