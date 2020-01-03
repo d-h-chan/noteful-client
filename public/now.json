@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "alias": "noteful-app",
+  "alias": "dchan-noteful-app",
   "name": "noteful-app",
   "routes": [
     {
