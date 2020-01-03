@@ -19,6 +19,9 @@ export default class NotePageMain extends React.Component {
   render() {
     const { notes=[] } = this.context
     const { noteId } = this.props.match.params
+    console.log(notes)
+    if (notes.length > 0)
+      console.log(typeof(notes[0].folderId))
     const note = findNote(notes, noteId) || { content: '' }
     return (
       <section className='NotePageMain'>

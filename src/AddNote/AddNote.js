@@ -11,7 +11,6 @@ export default class AddNote extends React.Component {
         const noteNameInput = event.target.noteNameInput.value;
         const noteContentInput = event.target.noteContentInput.value;
         const folderId = event.target.folderSelect.value;
-        //console.log(folderSelect)
         let validateResult = this.validate(noteNameInput, folderId);
         if (validateResult) {
             alert(validateResult);
@@ -36,7 +35,7 @@ export default class AddNote extends React.Component {
             name: `${noteNameInput}`,
             content: `${noteContentInput}`,
             modified: `${(new Date()).toISOString()}`,
-            folderId: `${folderId}`,
+            folderId: parseInt(folderId),
         };
         fetch(`${config.API_ENDPOINT}/notes`, {
             method: 'POST',
